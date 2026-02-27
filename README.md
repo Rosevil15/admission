@@ -79,6 +79,32 @@ USING (true);
 npm run dev
 ```
 
+## Deployment
+
+### Deploy to Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com)
+3. Click "New Project"
+4. Import your GitHub repository
+5. Add environment variables:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+   - `VITE_ADMIN_EMAIL`
+6. Click "Deploy"
+
+### Deploy to Netlify
+
+1. Push your code to GitHub
+2. Go to [netlify.com](https://netlify.com)
+3. Click "Add new site" → "Import an existing project"
+4. Connect to GitHub and select your repository
+5. Add environment variables in Site settings → Environment variables:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+   - `VITE_ADMIN_EMAIL`
+6. Click "Deploy site"
+
 ## Features
 
 ### Student Portal
