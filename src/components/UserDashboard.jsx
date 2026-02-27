@@ -242,7 +242,7 @@ function UserDashboard({ user, onLogout }) {
       </div>
 
       <div style={styles.content}>
-        <h2 style={styles.title}>My Applications</h2>
+        <h2 style={styles.title}>My Scholarship Applications</h2>
 
         {loading ? (
           <div style={styles.emptyState}>
@@ -253,7 +253,7 @@ function UserDashboard({ user, onLogout }) {
           <div style={styles.emptyState}>
             <div style={styles.emptyIcon}>📝</div>
             <div style={styles.emptyText}>No applications yet</div>
-            <div style={styles.emptySubtext}>Start your journey by submitting your first application</div>
+            <div style={styles.emptySubtext}>Start your journey by submitting your scholarship application</div>
             <button
               onClick={() => setShowForm(true)}
               style={{

@@ -74,7 +74,7 @@ function App() {
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <div style={styles.logo}>🎓 Admission Portal</div>
+        <div style={styles.logo}>🎓 Scholarship Portal</div>
         <div style={styles.nav}>
           {!isAdmin && (
             <button 

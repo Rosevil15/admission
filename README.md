@@ -1,6 +1,6 @@
-# Admission System
+# Scholarship Application System
 
-React + Supabase admission management system.
+React + Supabase scholarship management system.
 
 ## Setup
 
@@ -27,20 +27,12 @@ CREATE TABLE applications (
   gender TEXT,
   education TEXT,
   program TEXT,
+  gpa TEXT,
+  financial_need TEXT,
+  essay TEXT,
+  extracurricular TEXT,
   user_email TEXT,
   status TEXT DEFAULT 'pending',
-  created_at TIMESTAMP DEFAULT NOW()
-);
-
--- Create user_profiles table to store registration data
-CREATE TABLE user_profiles (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-  email TEXT NOT NULL,
-  full_name TEXT NOT NULL,
-  contact_number TEXT NOT NULL,
-  address TEXT NOT NULL,
-  strand_course TEXT NOT NULL,
   created_at TIMESTAMP DEFAULT NOW()
 );
 ```
@@ -109,14 +101,14 @@ npm run dev
 
 ### Student Portal
 - User registration and login
-- Submit admission applications
+- Submit scholarship applications
 - Track application status
 - View application history
 - Personal dashboard
 
 ### Admin Portal
 - Admin authentication with Supabase Auth
-- View all applications with filtering (all/pending/approved/rejected)
+- View all scholarship applications with filtering (all/pending/approved/rejected)
 - Approve or reject applications
 - Real-time status updates
 - Secure admin access

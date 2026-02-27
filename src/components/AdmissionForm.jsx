@@ -10,7 +10,11 @@ function AdmissionForm({ userEmail, onSuccess }) {
     date_of_birth: '',
     gender: '',
     education: '',
-    program: ''
+    program: '',
+    gpa: '',
+    financial_need: '',
+    essay: '',
+    extracurricular: ''
   })
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
@@ -30,7 +34,7 @@ function AdmissionForm({ userEmail, onSuccess }) {
       setMessage('Error: ' + error.message)
       setMessageType('error')
     } else {
-      setMessage('🎉 Application submitted successfully! We will review your application and get back to you soon.')
+      setMessage('🎉 Scholarship application submitted successfully! We will review your application and notify you of the results.')
       setMessageType('success')
       if (onSuccess) {
         setTimeout(() => onSuccess(), 2000)
@@ -43,7 +47,11 @@ function AdmissionForm({ userEmail, onSuccess }) {
           date_of_birth: '',
           gender: '',
           education: '',
-          program: ''
+          program: '',
+          gpa: '',
+          financial_need: '',
+          essay: '',
+          extracurricular: ''
         })
       }
     }
@@ -147,9 +155,9 @@ function AdmissionForm({ userEmail, onSuccess }) {
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <h2 style={styles.title}>Application Form</h2>
+        <h2 style={styles.title}>Scholarship Application Form</h2>
         <p style={styles.subtitle}>
-          Fill out the form below to apply for admission. All fields are required.
+          Fill out the form below to apply for a scholarship. All fields are required unless marked optional.
         </p>
       </div>
 
@@ -250,7 +258,7 @@ function AdmissionForm({ userEmail, onSuccess }) {
 
         <div style={styles.row}>
           <div style={styles.formGroup}>
-            <label style={styles.label}>Highest Education *</label>
+            <label style={styles.label}>Current Education Level *</label>
             <select
               value={formData.education}
               onChange={(e) => setFormData({ ...formData, education: e.target.value })}
@@ -260,16 +268,15 @@ function AdmissionForm({ userEmail, onSuccess }) {
               required
             >
               <option value="">Select education level</option>
-              <option value="high-school">High School</option>
-              <option value="associate">Associate Degree</option>
-              <option value="bachelor">Bachelor's Degree</option>
-              <option value="master">Master's Degree</option>
-              <option value="doctorate">Doctorate</option>
+              <option value="high-school">High School Student</option>
+              <option value="undergraduate">Undergraduate</option>
+              <option value="graduate">Graduate Student</option>
+              <option value="postgraduate">Postgraduate</option>
             </select>
           </div>
 
           <div style={styles.formGroup}>
-            <label style={styles.label}>Program of Interest *</label>
+            <label style={styles.label}>Field of Study *</label>
             <select
               value={formData.program}
               onChange={(e) => setFormData({ ...formData, program: e.target.value })}
@@ -278,15 +285,76 @@ function AdmissionForm({ userEmail, onSuccess }) {
               onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
               required
             >
-              <option value="">Select program</option>
+              <option value="">Select field of study</option>
               <option value="computer-science">Computer Science</option>
               <option value="business">Business Administration</option>
               <option value="engineering">Engineering</option>
               <option value="medicine">Medicine</option>
               <option value="arts">Arts & Humanities</option>
               <option value="science">Natural Sciences</option>
+              <option value="education">Education</option>
+              <option value="law">Law</option>
+              <option value="other">Other</option>
             </select>
           </div>
+        </div>
+
+        <div style={styles.row}>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>GPA / Academic Performance *</label>
+            <input
+              type="text"
+              placeholder="e.g., 3.8 or 90%"
+              value={formData.gpa}
+              onChange={(e) => setFormData({ ...formData, gpa: e.target.value })}
+              style={styles.input}
+              onFocus={(e) => e.target.style.borderColor = '#667eea'}
+              onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
+              required
+            />
+          </div>
+
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Financial Need Level *</label>
+            <select
+              value={formData.financial_need}
+              onChange={(e) => setFormData({ ...formData, financial_need: e.target.value })}
+              style={styles.select}
+              onFocus={(e) => e.target.style.borderColor = '#667eea'}
+              onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
+              required
+            >
+              <option value="">Select financial need</option>
+              <option value="high">High - Significant financial assistance needed</option>
+              <option value="moderate">Moderate - Some financial assistance needed</option>
+              <option value="low">Low - Minimal financial assistance needed</option>
+            </select>
+          </div>
+        </div>
+
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Personal Statement / Essay *</label>
+          <textarea
+            placeholder="Tell us about yourself, your academic goals, and why you deserve this scholarship (minimum 100 words)"
+            value={formData.essay}
+            onChange={(e) => setFormData({ ...formData, essay: e.target.value })}
+            style={{...styles.textarea, minHeight: '150px'}}
+            onFocus={(e) => e.target.style.borderColor = '#667eea'}
+            onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
+            required
+          />
+        </div>
+
+        <div style={styles.formGroup}>
+          <label style={styles.label}>Extracurricular Activities & Achievements (Optional)</label>
+          <textarea
+            placeholder="List any clubs, sports, volunteer work, awards, or leadership positions"
+            value={formData.extracurricular}
+            onChange={(e) => setFormData({ ...formData, extracurricular: e.target.value })}
+            style={styles.textarea}
+            onFocus={(e) => e.target.style.borderColor = '#667eea'}
+            onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
+          />
         </div>
 
         <button 
@@ -301,7 +369,7 @@ function AdmissionForm({ userEmail, onSuccess }) {
           onMouseEnter={(e) => !loading && (e.target.style.backgroundColor = '#5568d3')}
           onMouseLeave={(e) => !loading && (e.target.style.backgroundColor = '#667eea')}
         >
-          {loading ? '⏳ Submitting...' : '📝 Submit Application'}
+          {loading ? '⏳ Submitting...' : '🎓 Submit Scholarship Application'}
         </button>
       </form>
 

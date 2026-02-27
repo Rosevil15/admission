@@ -146,7 +146,7 @@ function UserAuth({ onAuthSuccess }) {
       <div style={styles.header}>
         <h2 style={styles.title}>{isLogin ? '👋 Welcome Back' : '🎓 Create Account'}</h2>
         <p style={styles.subtitle}>
-          {isLogin ? 'Login to track your application' : 'Register to apply for admission'}
+          {isLogin ? 'Login to track your scholarship application' : 'Register to apply for scholarship'}
         </p>
       </div>
 
